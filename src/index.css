@@ -45,7 +45,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .head_text {
-  @apply mt-5 text-5xl font-extrabold leading-[1.15] text-white sm:text-6xl;
+  @apply mt-5 text-4xl font-extrabold leading-[1.15] text-white sm:text-6xl;
 }
 
 .orange_gradient {
@@ -61,5 +61,5 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .desc {
-  @apply mt-5 text-lg text-gray-600 sm:text-xl max-w-2xl;
+  @apply mt-5 text-sm text-gray-600 sm:text-xl max-w-2xl;
 }

@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Home from "./pages/Home";
+import Navbar from "./components/Navbar";
+import Dashboard from "./pages/Dashboard";
 const App = () => {
   return (
-    <main className="flex min-h-screen flex-row bg-[#131313] p-4">
-      <header className="mx-auto max-w-[1280px] flex-1 max-sm:w-full sm:pr-5">
-        {/* Navbar */}
+    <div className="flex min-h-screen flex-col bg-[#131313] p-4">
+      <header className="l:w-full max-w-[1280px] max-sm:w-full sm:pr-5 xl:mx-auto xl:w-[1280px]">
+        <Navbar />
+      </header>
+      <main>
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Routes>
-      </header>
-    </main>
+      </main>
+    </div>
   );
 };
 

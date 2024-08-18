@@ -1,6 +1,8 @@
+import { usePrivy } from "@privy-io/react-auth";
 import React from "react";
-
+import CustomButton from "../components/CustomButton";
 const Home = () => {
+  const { login } = usePrivy();
   return (
     <section className="flex-center flex w-full flex-col items-center">
       <h1 className="head_text text-center">
@@ -14,6 +16,14 @@ const Home = () => {
         SteadyPathAI is dedicated to providing personalized mental health care
         through AI-driven treatment plans.
       </p>
+      <div className="mt-4 h-12 flex-row justify-end gap-2 sm:flex">
+        <CustomButton
+          btnType={"button"}
+          title={"Get Started"}
+          styles={"bg-[#2563eb]"}
+          handleClick={() => login()}
+        />
+      </div>
     </section>
   );
 };
