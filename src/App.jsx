@@ -9,7 +9,7 @@ const App = () => {
       <header className="l:w-full max-w-[1280px] max-sm:w-full sm:pr-5 xl:mx-auto xl:w-[1280px]">
         <Navbar />
       </header>
-      <main>
+      <main className="l:w-full max-w-[1280px] max-sm:w-full sm:pr-5 xl:mx-auto xl:w-[1280px]">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
