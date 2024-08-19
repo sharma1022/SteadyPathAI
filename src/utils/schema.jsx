@@ -3,23 +3,23 @@ import { integer, varchar, pgTable, serial, text } from "drizzle-orm/pg-core";
 
 // users schema
 export const Users = pgTable("users", {
-  user_id: serial("user_id").primaryKey(),
-  username: varchar("username").notNull(),
+  id: serial("user_id").primaryKey(),
   firstName: varchar("first_name").notNull(),
   lastName: varchar("last_name").notNull(),
+  username: varchar("username").notNull(),
   age: integer("age").notNull(),
   location: varchar("location").notNull(),
   createdBy: varchar("created_by").notNull(),
 });
 
 // records schema
-export const Records = pgTable("medical_records", {
-  recordId: serial("record_id").primaryKey(),
+export const Records = pgTable("records", {
+  id: serial("record_id").primaryKey(),
   userId: integer("user_id")
     .references(() => Users.id)
     .notNull(),
   recordName: varchar("record_name").notNull(),
-  aiAnalysis: varchar("ai_analysis").notNull(),
+  analysisResult: varchar("analysis_result").notNull(),
   kanbanRecords: varchar("kanban_records").notNull(),
   createdBy: varchar("created_by").notNull(),
 });
