@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@privy-io/react-auth": "^1.79.1",
+    "drizzle-orm": "^0.33.0",
+    "postgres": "^3.4.4",
     "preline": "^2.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -19,6 +21,7 @@
   "devDependencies": {
     "@vitejs/plugin-react": "^2",
     "autoprefixer": "^10.4.13",
+    "drizzle-kit": "^0.24.0",
     "postcss": "^8.4.19",
     "prettier": "^3.3.3",
     "prettier-plugin-tailwindcss": "^0.6.5",

@@ -13,6 +13,7 @@ const Navbar = () => {
   const handleLoginLogout = useCallback(() => {
     if (authenticated) {
       logout();
+      navigate("/");
     } else {
       login();
       navigate("/dashboard");
@@ -32,7 +33,11 @@ const Navbar = () => {
         <CustomButton
           btnType={"button"}
           title={authenticated ? "Logout" : "Get Started"}
-          styles={authenticated ? "bg-[#1dc071]" : "bg-[#2563eb]"}
+          styles={
+            authenticated
+              ? "bg-[#1dc071]"
+              : "bg-[#2563eb] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
+          }
           handleClick={handleLoginLogout}
         />
       </div>
