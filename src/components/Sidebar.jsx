@@ -28,7 +28,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState("Dashboard");
   return (
-    <div className="mt-8 hidden w-[76px] flex-1 flex-col items-center justify-between gap-48 rounded-[20px] bg-[#1c1c24] py-4 sm:flex xl:w-[240px] xl:text-left">
+    <div className="hidden flex-col items-center justify-between gap-48 rounded-[20px] bg-[#1c1c24] py-4 sm:flex sm:w-[128px] md:w-[128px] xl:w-[248px] xl:text-left">
       <div className="flex flex-col items-center justify-center gap-3">
         {navlinks.map((link) => (
           <div>
