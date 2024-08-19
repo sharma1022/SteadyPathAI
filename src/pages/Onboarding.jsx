@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-
+import { useStateContext } from "../context";
+import { usePrivy } from "@privy-io/react-auth";
+import { useNavigate } from "react-router-dom";
 const Onboarding = () => {
   const [firstName, setFirstNname] = useState("");
   const [lastName, setLastNname] = useState("");
@@ -7,9 +9,26 @@ const Onboarding = () => {
   const [age, setAge] = useState("");
   const [location, setLocation] = useState("");
 
-  const handleOnboarding = async () => {
+  const { createUser } = useStateContext();
+  const { user } = usePrivy();
+
+  const navigate = useNavigate();
+
+  const handleOnboarding = async (e) => {
     e.preventDefault();
-    console.log(username, age, location);
+    const userData = {
+      firstName,
+      lastName,
+      username,
+      age: parseInt(age, 10),
+      location,
+      createdBy: user.email.address,
+    };
+    const newUser = await createUser(userData);
+
+    if (newUser) {
+      navigate("/profile");
+    }
   };
   return (
     <div className="mt-16 flex items-center justify-center bg-[#13131a]">

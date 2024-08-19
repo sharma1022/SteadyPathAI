@@ -40,12 +40,12 @@ export const StateContextProvider = ({ children }) => {
       const newUser = await db
         .insert(Users)
         .values(userData)
-        .returning()
+        .returning({ id: Users.id, createdBy: Users.createdBy })
         .execute();
-
       setUsers((prevUsers) => [...prevUsers, newUser[0]]);
+      return newUser[0];
     } catch (error) {
-      console.error("Error creating user.", error);
+      console.error("Error creating user:", error);
       return null;
     }
   }, []);
