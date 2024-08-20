@@ -13,7 +13,6 @@ const Navbar = () => {
   const handleLoginLogout = useCallback(() => {
     if (authenticated) {
       logout();
-      navigate("/");
     } else {
       login();
       navigate("/dashboard");

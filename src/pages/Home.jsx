@@ -23,7 +23,9 @@ const Home = () => {
           styles={
             "bg-[#2563eb] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
           }
-          handleClick={() => login()}
+          handleClick={() => {
+            login();
+          }}
         />
       </div>
     </section>

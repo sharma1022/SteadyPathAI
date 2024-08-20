@@ -25,13 +25,14 @@ export const StateContextProvider = ({ children }) => {
       const result = await db
         .select()
         .from(Users)
-        .where(eq(Users.createdBy, email));
+        .where(eq(Users.createdBy, email))
+        .execute();
 
       if (result.length > 0) {
         setCurrentUser(result[0]);
       }
     } catch (error) {
-      console.error("Error fetching user by email.", error);
+      console.error("Error fetching user by email:", error);
     }
   }, []);
 
