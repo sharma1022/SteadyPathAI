@@ -7,6 +7,7 @@ import Onboarding from "./pages/Onboarding";
 import Profile from "./pages/Profile";
 import { useStateContext } from "./context";
 import { usePrivy } from "@privy-io/react-auth";
+import MedicalRecords from "./pages/MedicalRecords/MedicalRecords";
 const App = () => {
   const { currentUser, getUserByEmail } = useStateContext();
 
@@ -32,6 +33,7 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/onboarding" element={<Onboarding />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/medical-records" element={<MedicalRecords />} />
         </Routes>
       </main>
     </div>
