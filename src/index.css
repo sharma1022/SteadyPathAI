@@ -71,3 +71,11 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 .navbar-txt{
   @apply text-[28px] leading-[48px] font-semibold md:text-[32px];
 }
+
+.kanban::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+}
+.kanban::-webkit-scrollbar-thumb {
+  background-color: #13131a;
+  outline: 1px solid #13131a;
+}

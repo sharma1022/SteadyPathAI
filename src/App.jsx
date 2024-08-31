@@ -9,6 +9,7 @@ import { useStateContext } from "./context";
 import { usePrivy } from "@privy-io/react-auth";
 import MedicalRecords from "./pages/MedicalRecords/MedicalRecords";
 import RecordDetails from "./pages/MedicalRecords/RecordDetails";
+import Schedule from "./pages/Schedule";
 const App = () => {
   const { currentUser, getUserByEmail } = useStateContext();
 
@@ -28,7 +29,7 @@ const App = () => {
       <header className="l:w-full max-w-[1280px] max-sm:w-full sm:pr-5 xl:mx-auto xl:w-[1280px]">
         <Navbar />
       </header>
-      <main className="l:w-full max-w-[1280px] max-sm:w-full sm:pr-5 xl:mx-auto xl:w-[1280px]">
+      <main className="l:w-full scrollbar-thumb-gray-700 scrollbar-track-gray-300 max-w-[1280px] max-sm:w-full sm:pr-5 xl:mx-auto xl:w-[1280px]">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
@@ -36,6 +37,7 @@ const App = () => {
           <Route path="/profile" element={<Profile />} />
           <Route path="/medical-records" element={<MedicalRecords />} />
           <Route path="/medical-records/:id" element={<RecordDetails />} />
+          <Route path="/schedule" element={<Schedule />} />
         </Routes>
       </main>
     </div>

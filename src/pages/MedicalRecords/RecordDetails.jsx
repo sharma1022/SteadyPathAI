@@ -61,7 +61,7 @@ const RecordDetails = () => {
 
     try {
       const base64Data = await readFileAsBase64(file);
-
+      console.log(base64Data);
       const imageParts = [
         {
           inlineData: {
@@ -103,7 +103,7 @@ const RecordDetails = () => {
 
     const genAI = new GoogleGenerativeAI(geminiApiKey);
 
-    const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
     const prompt = `Your role and goal is to be an that will be using this treatment plan ${analysisResult} to create Columns:
                 - Todo: Tasks that need to be started
@@ -112,7 +112,7 @@ const RecordDetails = () => {
           
                 Each task should include a brief description. The tasks should be categorized appropriately based on the stage of the treatment process.
           
-                Please provide the results in the following  format for easy front-end display no quotating or what so ever just pure the structure below:
+                Please provide the results in the following  format for easy front-end display no quotating or markdown what so ever just pure the structure below:
 
                 {
                   "columns": [
@@ -127,13 +127,13 @@ const RecordDetails = () => {
                     { "id": "4", "columnId": "doing", "content": "Example task 4" },
                     { "id": "5", "columnId": "done", "content": "Example task 5" }
                   ]
-                }
-                            
+                }           
                 `;
 
     const result = await model.generateContent(prompt);
     const response = result.response;
     const text = response.text();
+    console.log(text);
     const parsedResponse = JSON.parse(text);
 
     console.log(text);
@@ -197,6 +197,7 @@ const RecordDetails = () => {
                         <button
                           type="button"
                           className="inline-flex items-center gap-x-2 rounded-lg border border-gray-200 bg-white px-3 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-50 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800"
+                          onClick={processTreatmentPlan}
                         >
                           View Treatment plan
                           <FaChevronRight size={20} />

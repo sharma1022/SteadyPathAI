@@ -2,6 +2,7 @@ import React from "react";
 import { navlinks } from "../constants";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+
 const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => (
   <div
     className={`h-[48px] w-[48px] rounded-[10px] xl:w-[216px] xl:gap-4 ${
