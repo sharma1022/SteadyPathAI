@@ -53,7 +53,7 @@ const ColumnContainer = ({
     <div
       ref={setNodeRef}
       style={style}
-      className="flex h-[500px] max-h-[500px] w-[350px] flex-col rounded-xl bg-[#1c1c24]"
+      className="flex h-[500px] max-h-[500px] w-[350px] flex-col rounded-xl bg-white shadow-lg dark:border-neutral-800 dark:bg-[#1c1c24]"
     >
       <div
         {...attributes}
@@ -61,13 +61,13 @@ const ColumnContainer = ({
         onClick={() => {
           setEditMode(true);
         }}
-        className="text-md m-2 flex h-[60px] cursor-grab items-center justify-between rounded-xl bg-[#13131a] p-3 font-bold"
+        className="text-md m-2 flex h-[60px] cursor-grab items-center justify-between rounded-xl bg-gray-100 p-3 font-bold dark:bg-[#13131a]"
       >
-        <div className="flex gap-2">
+        <div className="flex gap-2 text-gray-800 dark:text-white">
           {!editMode && column.title}
           {editMode && (
             <input
-              className="rounded border bg-black px-2 outline-none focus:border-green-500"
+              className="rounded border px-2 outline-none focus:border-green-500 dark:bg-black"
               value={column.title}
               onChange={(e) => updateColumn(column.id, e.target.value)}
               autoFocus
@@ -105,7 +105,7 @@ const ColumnContainer = ({
       </div>
 
       <button
-        className="border-columnBackgroundColor border-x-columnBackgroundColor hover:bg-mainBackgroundColor flex items-center gap-2 rounded-md border-2 p-4 hover:text-green-500 active:bg-black"
+        className="dark:border-columnBackgroundColor dark:border-x-columnBackgroundColor hover:bg-mainBackgroundColor flex items-center gap-2 rounded-md border-2 border-gray-800 p-4 text-gray-800 hover:text-green-500 active:bg-black dark:border-gray-300 dark:text-white"
         onClick={() => {
           createTask(column.id);
         }}

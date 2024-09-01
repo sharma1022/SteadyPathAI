@@ -2,11 +2,14 @@ import React from "react";
 import { navlinks } from "../constants";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => (
   <div
     className={`h-[48px] w-[48px] rounded-[10px] xl:w-[216px] xl:gap-4 ${
-      isActive && isActive === name && "bg-[#2c2f32]"
+      isActive &&
+      isActive === name &&
+      "bg-gray-100 hover:bg-gray-300 dark:bg-[#2c2f32]"
     } flex items-center justify-center xl:justify-start xl:px-4 ${
       !disabled && "cursor-pointer"
     } ${styles}`}
@@ -21,7 +24,7 @@ const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => (
         className={`h-6 w-6 ${isActive !== name && "grayscale"}`}
       />
     )}
-    <p className={"sidebar-txt !text-white"}>{name}</p>
+    <p className={"sidebar-txt text-gray-800 dark:!text-white"}>{name}</p>
   </div>
 );
 
@@ -29,7 +32,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState("Dashboard");
   return (
-    <div className="hidden flex-col items-center justify-between gap-48 rounded-[20px] bg-[#1c1c24] py-4 sm:flex sm:w-[128px] md:w-[128px] xl:w-[248px] xl:text-left">
+    <div className="hidden flex-col items-center justify-between gap-48 rounded-[20px] bg-gray-200 py-4 sm:flex sm:w-[128px] md:w-[128px] xl:w-[248px] xl:text-left dark:bg-[#1c1c24]">
       <div className="flex flex-col items-center justify-center gap-3">
         {navlinks.map((link) => (
           <div>
@@ -47,10 +50,7 @@ const Sidebar = () => {
           </div>
         ))}
       </div>
-      <Icon
-        styles="bg-[#1c1c24] shadow-secondary"
-        imgUrl={"src/assets/icons/sun.svg"}
-      />
+      <ThemeSwitcher />
     </div>
   );
 };

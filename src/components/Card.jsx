@@ -15,7 +15,7 @@ const Card = ({ title, subTitle, value, icon: Icon, onClick }) => {
             </h3>
           </div>
         </div>
-        <div className="flex size-[46px] h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-blue-600 text-white dark:bg-[#1c1c24] dark:text-blue-200">
+        <div className="flex size-[46px] h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-gray-100 text-white dark:bg-[#1c1c24] dark:text-blue-200">
           <Icon size={25} className="text-cyan-600" />
         </div>
       </div>

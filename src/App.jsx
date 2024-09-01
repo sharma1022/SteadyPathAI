@@ -25,7 +25,7 @@ const App = () => {
   // }, [user, authenticated, ready, login, currentUser, navigate]);
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#13131a] p-4">
+    <div className="flex min-h-screen flex-col bg-gray-50 p-4 dark:bg-[#13131a]">
       <header className="l:w-full max-w-[1280px] max-sm:w-full sm:pr-5 xl:mx-auto xl:w-[1280px]">
         <Navbar />
       </header>

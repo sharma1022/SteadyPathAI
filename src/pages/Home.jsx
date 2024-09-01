@@ -5,7 +5,7 @@ const Home = () => {
   const { login } = usePrivy();
   return (
     <section className="flex-center flex w-full flex-col items-center">
-      <h1 className="head_text text-center">
+      <h1 className="head_text text-center text-black">
         SteadyPathAI
         <br className="max-md\:hidden" />
         <span className="blue_gradient text-center">

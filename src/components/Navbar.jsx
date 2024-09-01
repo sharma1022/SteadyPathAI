@@ -4,6 +4,7 @@ import CustomButton from "./CustomButton";
 import { useNavigate } from "react-router-dom";
 import { RiMentalHealthFill } from "react-icons/ri";
 import { navlinks } from "../constants";
+import ThemeSwitcher from "./ThemeSwitcher";
 const Navbar = () => {
   const { ready, authenticated, login, user, logout } = usePrivy();
   const [toggleDrawer, setToggleDrawer] = useState(false);
@@ -34,7 +35,7 @@ const Navbar = () => {
           title={authenticated ? "Logout" : "Get Started"}
           styles={
             authenticated
-              ? "bg-[#1dc071]"
+              ? "bg-cyan-600"
               : "bg-[#2563eb] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
           }
           handleClick={handleLoginLogout}
@@ -57,7 +58,7 @@ const Navbar = () => {
         />
 
         <div
-          className={`shadow-secondary absolute left-0 right-0 top-[60px] z-10 bg-[#1c1c24] py-4 ${
+          className={`shadow-secondary absolute left-0 right-0 top-[60px] z-10 bg-gray-200 py-4 shadow-lg dark:bg-[#1c1c24] ${
             !toggleDrawer ? "-translate-y-[100vh]" : "translate-y-0"
           } transition-all duration-700`}
         >
@@ -65,7 +66,7 @@ const Navbar = () => {
             {navlinks.map((link) => (
               <li
                 key={link.name}
-                className={`flex items-center p-4 ${isActive === link.name && "bg-[#3a3a43]"}`}
+                className={`flex items-center p-4 ${isActive === link.name && "bg-gray-100 dark:bg-[#3a3a43]"}`}
                 onClick={() => {
                   setIsActive(link.name);
                   setToggleDrawer(false);
@@ -89,10 +90,7 @@ const Navbar = () => {
               </li>
             ))}
             <li className="flex items-center p-4">
-              <img
-                src="src/assets/icons/sun.svg"
-                className={`h-[24px] w-[24px] object-contain`}
-              />
+              <ThemeSwitcher />
             </li>
           </ul>
         </div>

@@ -37,7 +37,7 @@ const TaskCard = ({ task, deleteTask, updateTask }) => {
       <div
         ref={setNodeRef}
         style={style}
-        className="bg-mainBackgroundColor relative flex h-[100px] min-h-[100px] cursor-grab items-center rounded-xl border-2 border-green-500 p-3 text-left opacity-30"
+        className="dark:bg-mainBackgroundColor relative flex h-[100px] min-h-[100px] cursor-grab items-center rounded-xl border-2 border-green-500 bg-gray-100 p-3 text-left opacity-30"
       />
     );
   }
@@ -52,7 +52,7 @@ const TaskCard = ({ task, deleteTask, updateTask }) => {
         className="bg-mainBackgroundColor relative flex h-[100px] min-h-[100px] cursor-grab items-center rounded-xl p-2.5 text-left hover:ring-2 hover:ring-inset hover:ring-green-500"
       >
         <textarea
-          className="h-[90%] w-full resize-none rounded border-none bg-transparent text-white focus:outline-none"
+          className="h-[90%] w-full resize-none rounded border-none bg-transparent text-gray-800 focus:outline-none dark:text-white"
           value={task.content}
           autoFocus
           placeholder="Task content here"
@@ -75,7 +75,7 @@ const TaskCard = ({ task, deleteTask, updateTask }) => {
       {...attributes}
       {...listeners}
       onClick={toggleEditMode}
-      className="task relative flex h-[100px] min-h-[100px] cursor-grab items-center rounded-xl bg-[#13131a] p-2.5 text-left hover:ring-2 hover:ring-inset hover:ring-green-500"
+      className="task relative flex h-[100px] min-h-[100px] cursor-grab items-center rounded-xl bg-gray-100 p-2.5 text-left hover:ring-2 hover:ring-inset hover:ring-green-500 dark:bg-[#13131a]"
       onMouseEnter={() => {
         setMouseIsOver(true);
       }}
@@ -83,7 +83,7 @@ const TaskCard = ({ task, deleteTask, updateTask }) => {
         setMouseIsOver(false);
       }}
     >
-      <p className="my-auto h-[90%] w-full overflow-y-auto overflow-x-hidden whitespace-pre-wrap">
+      <p className="my-auto h-[90%] w-full overflow-y-auto overflow-x-hidden whitespace-pre-wrap text-gray-800 dark:text-white">
         {task.content}
       </p>
 

@@ -64,7 +64,7 @@ const KanbanBoard = ({ state }) => {
           </div>
           <button
             onClick={() => createNewColumn()}
-            className="border-columnBackgroundColor bg-mainBackgroundColor flex h-[60px] w-[350px] min-w-[350px] cursor-pointer gap-2 rounded-lg border-2 p-4 ring-green-500 hover:ring-2"
+            className="border-columnBackgroundColor dr:bg-mainBackgroundColor flex h-[60px] w-[350px] min-w-[350px] cursor-pointer gap-2 rounded-lg border-2 border-gray-800 p-4 text-gray-800 ring-green-500 hover:ring-2 dark:border-white dark:text-white"
           >
             <FaPlus />
             Add Column
