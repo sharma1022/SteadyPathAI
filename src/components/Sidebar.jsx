@@ -32,7 +32,7 @@ const Sidebar = () => {
   const navigate = useNavigate();
   const [isActive, setIsActive] = useState("Dashboard");
   return (
-    <div className="hidden flex-col items-center justify-between gap-48 rounded-[20px] bg-gray-200 py-4 sm:flex sm:w-[128px] md:w-[128px] xl:w-[248px] xl:text-left dark:bg-[#1c1c24]">
+    <div className="hidden flex-col items-center justify-between gap-48 rounded-[20px] bg-gray-200 py-4 sm:flex sm:p-4 xl:w-[248px] xl:text-left dark:bg-[#1c1c24]">
       <div className="flex flex-col items-center justify-center gap-3">
         {navlinks.map((link) => (
           <div>
