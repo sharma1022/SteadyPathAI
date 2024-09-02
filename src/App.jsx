@@ -11,6 +11,7 @@ import MedicalRecords from "./pages/MedicalRecords/MedicalRecords";
 import RecordDetails from "./pages/MedicalRecords/RecordDetails";
 import Schedule from "./pages/Schedule";
 import SidebarLayout from "./pages/SidebarLayout";
+import SignIn from "./pages/SignIn";
 const App = () => {
   const { currentUser, getUserByEmail } = useStateContext();
 
@@ -41,6 +42,7 @@ const App = () => {
           </Route>
           <Route path="/" element={<Home />} />
           <Route path="/onboarding" element={<Onboarding />} />
+          <Route path="/sign-in" element={<SignIn />} />
         </Routes>
       </main>
     </div>

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Modal from "../Modal";
 import { TbProgress } from "react-icons/tb";
+
 const FileUploadModal = ({
   isOpen,
   onClose,
@@ -10,6 +11,26 @@ const FileUploadModal = ({
   uploadSuccess,
   filename,
 }) => {
+  const [isDragging, setIsDragging] = useState(false);
+
+  const handleDragOver = (e) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = () => {
+    setIsDragging(false);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const file = e.dataTransfer.files[0];
+    if (file) {
+      onFileChange({ target: { files: [file] } });
+    }
+  };
+
   return (
     <Modal
       title={"Upload Reports"}
@@ -18,7 +39,16 @@ const FileUploadModal = ({
       onAction={onFileUpload}
       actionLabel={"Upload and Analyze"}
     >
-      <div className="flex w-full flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-slate-300 p-8 text-slate-700 dark:border-slate-700 dark:text-slate-300">
+      <div
+        className={`flex w-full flex-col items-center justify-center gap-2 rounded-xl border ${
+          isDragging
+            ? "border-blue-500"
+            : "border-dashed border-slate-300 dark:border-slate-700"
+        } p-8 text-slate-700 dark:text-slate-300`}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
@@ -56,11 +86,12 @@ const FileUploadModal = ({
           className="mr-3 mt-3 h-7 w-5 animate-spin text-white"
         />
       )}
-
       {uploadSuccess && (
-        <p className="mt-2 text-green-600">Upload successful!</p>
+        <p className="mt-2 text-blue-600">Upload successful!</p>
       )}
-      <span className="text-md text-left text-white">{filename}</span>
+      <span className="text-md mt-4 text-left text-gray-800 dark:text-white">
+        {filename}
+      </span>
     </Modal>
   );
 };
