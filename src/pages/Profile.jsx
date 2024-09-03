@@ -23,9 +23,9 @@ const Profile = () => {
     <div className="w-full rounded-lg bg-white py-6 shadow-lg dark:bg-[#1c1c24]">
       <div className="flex flex-col">
         <h1 className="mx-4 mb-2 text-3xl font-semibold text-gray-800 sm:mx-8 dark:text-white">
-          User Profile
+          User Account
         </h1>
-        <div className="mt-4 w-full border-t border-gray-200 px-4 sm:px-8 dark:border-neutral-800">
+        <div className="w-full border-t border-gray-200 px-4 pt-4 sm:px-8 dark:border-neutral-800">
           <p className="mb-1 text-sm text-gray-400">First Name:</p>
           <p className="mb-4 text-lg font-semibold text-gray-800 dark:text-white">
             {currentUser.firstName}

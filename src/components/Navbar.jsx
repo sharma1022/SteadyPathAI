@@ -16,10 +16,9 @@ const Navbar = () => {
       logout();
       navigate("/");
     } else {
-      login();
-      navigate("/dashboard");
+      navigate("/sign-in");
     }
-  }, [authenticated, login, logout, user]);
+  }, [authenticated, logout, user]);
 
   return (
     <div className="mb-[35px] flex w-full flex-col-reverse justify-between gap-6 sm:flex-row md:flex-row">
@@ -36,7 +35,7 @@ const Navbar = () => {
           title={authenticated ? "Logout" : "Get Started"}
           styles={
             authenticated
-              ? "bg-cyan-600"
+              ? "bg-cyan-600 hover:bg-cyan-500"
               : "bg-[#2563eb] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
           }
           handleClick={handleLoginLogout}
