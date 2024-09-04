@@ -19,7 +19,7 @@ const CreateRecordModal = ({ isOpen, onClose, onCreate }) => {
         <div>
           <label
             htmlFor="folder-name"
-            className="mb-2 block text-sm text-white"
+            className="mb-2 block text-sm text-gray-800 dark:text-white"
           >
             Record Name
           </label>

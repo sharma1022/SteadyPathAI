@@ -94,6 +94,42 @@ export const StateContextProvider = ({ children }) => {
     }
   }, []);
 
+  // Function to edit a user
+  const editUser = useCallback(
+    async (userId, updatedUserData) => {
+      try {
+        const updatedUser = await db
+          .update(Users)
+          .set({
+            firstName: updatedUserData.firstName,
+            lastName: updatedUserData.lastName,
+            username: updatedUserData.username,
+            age: updatedUserData.age,
+            location: updatedUserData.location,
+            createdBy: updatedUserData.createdBy,
+          })
+          .where(eq(Users.id, userId))
+          .returning() // Returns the updated user data
+          .execute();
+
+        // Update the local state with the new user data
+        setUsers((prevUsers) =>
+          prevUsers.map((user) => (user.id === userId ? updatedUser[0] : user)),
+        );
+
+        if (currentUser?.id === userId) {
+          setCurrentUser(updatedUser[0]);
+        }
+
+        return updatedUser[0];
+      } catch (error) {
+        console.error("Error updating user:", error);
+        return null;
+      }
+    },
+    [currentUser],
+  );
+
   return (
     <StateContext.Provider
       value={{
@@ -106,6 +142,7 @@ export const StateContextProvider = ({ children }) => {
         createRecord,
         currentUser,
         updateRecord,
+        editUser,
       }}
     >
       {children}
