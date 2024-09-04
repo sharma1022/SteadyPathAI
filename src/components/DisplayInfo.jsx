@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Card from "./Card";
 import { FaHourglassEnd } from "react-icons/fa6";
 import { TbCircleDashedCheck, TbUserScan } from "react-icons/tb";
-import { FaRegFolder, FaCheckCircle } from "react-icons/fa";
+import { FaRegFolder, FaCheckCircle, FaTasks } from "react-icons/fa";
 import { IoAlertCircleOutline } from "react-icons/io5";
 import { usePrivy } from "@privy-io/react-auth";
 import { useStateContext } from "../context";
@@ -96,7 +96,7 @@ const DisplayInfo = () => {
       value: `${metrics.completedTasks} of ${metrics.totalTasks}`,
       icon: TbCircleDashedCheck,
 
-      onClick: () => navigate("/treatment/progress"),
+      onClick: () => navigate("/schedule"),
     },
     {
       title: "Total Folders",
@@ -109,7 +109,7 @@ const DisplayInfo = () => {
       title: "Total Tasks",
       subTitle: "View",
       value: metrics.totalTasks,
-      icon: TbUserScan,
+      icon: FaTasks,
       onClick: () => navigate("/schedule"),
     },
     {
@@ -117,21 +117,21 @@ const DisplayInfo = () => {
       subTitle: "View",
       value: metrics.completedTasks,
       icon: FaCheckCircle,
-      onClick: () => navigate("/task/completed"),
+      onClick: () => navigate("/schedule"),
     },
     {
       title: "Pending Tasks",
       subTitle: "View",
       value: metrics.pendingTasks,
       icon: FaHourglassEnd,
-      onClick: () => navigate("/task/pending"),
+      onClick: () => navigate("/schedule"),
     },
     {
       title: "Overdue Tasks",
       subTitle: "View",
       value: metrics.overdueTasks,
       icon: IoAlertCircleOutline,
-      onClick: () => navigate("/task/overdue"),
+      onClick: () => navigate("/schedule"),
     },
   ];
 
