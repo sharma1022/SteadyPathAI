@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import {
   DndContext,
   DragOverlay,
@@ -11,6 +11,8 @@ import { FaPlus } from "react-icons/fa6";
 import { createPortal } from "react-dom";
 import TaskCard from "./TaskCard";
 import ColumnContainer from "./ColumnContainer";
+import { useStateContext } from "../context";
+import { usePrivy } from "@privy-io/react-auth";
 
 const KanbanBoard = ({ state }) => {
   const defaultCols =
@@ -18,7 +20,6 @@ const KanbanBoard = ({ state }) => {
       id: col?.id,
       title: col?.title,
     })) || [];
-
   const defaultTasks =
     state?.tasks.map((task) => ({
       id: task?.id,

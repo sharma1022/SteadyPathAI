@@ -49,7 +49,7 @@ const TaskCard = ({ task, deleteTask, updateTask }) => {
         style={style}
         {...attributes}
         {...listeners}
-        className="bg-mainBackgroundColor relative flex h-[100px] min-h-[100px] cursor-grab items-center rounded-xl p-2.5 text-left hover:ring-2 hover:ring-inset hover:ring-green-500"
+        className="bg-mainBackgroundColor relative flex h-[100px] min-h-[100px] cursor-grab items-center rounded-xl p-2.5 text-left hover:ring-2 hover:ring-inset hover:ring-blue-500"
       >
         <textarea
           className="h-[90%] w-full resize-none rounded border-none bg-transparent text-gray-800 focus:outline-none dark:text-white"
@@ -75,7 +75,7 @@ const TaskCard = ({ task, deleteTask, updateTask }) => {
       {...attributes}
       {...listeners}
       onClick={toggleEditMode}
-      className="task relative flex h-[100px] min-h-[100px] cursor-grab items-center rounded-xl bg-gray-100 p-2.5 text-left hover:ring-2 hover:ring-inset hover:ring-green-500 dark:bg-[#13131a]"
+      className="task relative flex h-[100px] min-h-[100px] cursor-grab items-center rounded-xl bg-gray-100 p-2.5 text-left hover:ring-2 hover:ring-inset hover:ring-blue-500 dark:bg-[#13131a]"
       onMouseEnter={() => {
         setMouseIsOver(true);
       }}
