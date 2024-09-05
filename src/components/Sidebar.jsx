@@ -24,7 +24,13 @@ const Icon = ({ styles, name, imgUrl, isActive, disabled, handleClick }) => (
         className={`h-6 w-6 ${isActive !== name && "grayscale"}`}
       />
     )}
-    <p className={"sidebar-txt text-gray-800 dark:!text-white"}>{name}</p>
+    <p
+      className={`sidebar-txt ${
+        isActive === name ? "text-[#0891b2]" : "text-[#808191]"
+      }`}
+    >
+      {name}
+    </p>
   </div>
 );
 
