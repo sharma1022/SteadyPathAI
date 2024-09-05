@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { usePrivy } from "@privy-io/react-auth";
 import { useStateContext } from "../../context";
 import CreateRecordModal from "../../components/MedicalRecords/CreateRecordModal";
+import { InfinitySpin } from "react-loader-spinner";
 const MedicalRecords = () => {
   const navigate = useNavigate();
   const { user } = usePrivy();
@@ -63,7 +64,20 @@ const MedicalRecords = () => {
       state: filteredRecords[0],
     });
   };
-
+  if (!currentUser) {
+    return (
+      <div className="flex h-[50vh] w-full items-center justify-center">
+        <div className="text-lg text-gray-500">
+          <InfinitySpin
+            visible={true}
+            width="200"
+            color="#2196F3"
+            ariaLabel="infinity-spin-loading"
+          />
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="flex flex-wrap gap-[26px]">
       <button

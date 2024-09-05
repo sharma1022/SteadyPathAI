@@ -4,17 +4,18 @@ import { useNavigate } from "react-router-dom";
 import CustomButton from "../components/CustomButton";
 import { ContainerScroll } from "../components/ui/container-scroll-animation";
 import dashImg from "../assets/icons/dash.png";
+
 const Home = () => {
   const { authenticated } = usePrivy();
   const navigate = useNavigate();
   return (
-    <section className="flex-center flex w-full flex-col items-center">
+    <section className="flex-center l:p-8 mt-12 flex w-full flex-col items-center">
       <ContainerScroll
         titleComponent={
           <>
             <h1 className="text-4xl font-semibold text-black dark:text-white">
               SteadyPathAI <br />
-              <span className="blue_gradient mt-1 text-4xl font-bold leading-none md:text-[6rem]">
+              <span className="blue_gradient mt-1 text-4xl font-bold leading-none md:text-[4rem] lg:text-[5rem]">
                 AI Powered Mental Health Care Recommendations
               </span>
             </h1>
@@ -39,12 +40,14 @@ const Home = () => {
         SteadyPathAI is dedicated to providing personalized mental health care
         through AI-driven treatment plans.
       </p>
-      <div className="mt-4 h-12 flex-row justify-end gap-2 sm:flex">
+      <div className="mb-8 mt-4 h-12 flex-row justify-end gap-2 sm:flex">
         <CustomButton
           btnType={"button"}
-          title={"Get Started"}
+          title={authenticated ? "Dashboard >" : "Get Started >"}
           styles={
-            "bg-[#2563eb] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
+            authenticated
+              ? "bg-cyan-600 hover:bg-cyan-500"
+              : "bg-[#2563eb] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
           }
           handleClick={() => {
             if (authenticated) {

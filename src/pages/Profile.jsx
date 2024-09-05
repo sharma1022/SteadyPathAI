@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Sidebar } from "../components";
+import { InfinitySpin } from "react-loader-spinner";
 import { useStateContext } from "../context";
 import { usePrivy } from "@privy-io/react-auth";
 import { MdEdit } from "react-icons/md";
@@ -52,8 +52,15 @@ const Profile = () => {
 
   if (!currentUser) {
     return (
-      <div className="flex h-screen items-center justify-center">
-        <div className="text-lg text-gray-500">Loading...</div>
+      <div className="flex h-[50vh] w-full items-center justify-center">
+        <div className="text-lg text-gray-500">
+          <InfinitySpin
+            visible={true}
+            width="200"
+            color="#2196F3"
+            ariaLabel="infinity-spin-loading"
+          />
+        </div>
       </div>
     );
   }

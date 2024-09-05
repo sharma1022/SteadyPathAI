@@ -7,7 +7,7 @@ import { FaRegFolder, FaCheckCircle, FaTasks } from "react-icons/fa";
 import { IoAlertCircleOutline } from "react-icons/io5";
 import { usePrivy } from "@privy-io/react-auth";
 import { useStateContext } from "../context";
-
+import { InfinitySpin } from "react-loader-spinner";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 
@@ -155,8 +155,15 @@ const DisplayInfo = () => {
   };
   if (!currentUser) {
     return (
-      <div className="flex h-screen items-center justify-center">
-        <div className="text-lg text-gray-500">Loading...</div>
+      <div className="flex h-[50vh] w-full items-center justify-center">
+        <div className="text-lg text-gray-500">
+          <InfinitySpin
+            visible={true}
+            width="200"
+            color="#2196F3"
+            ariaLabel="infinity-spin-loading"
+          />
+        </div>
       </div>
     );
   }
