@@ -79,3 +79,12 @@ input[type="date"]::-webkit-calendar-picker-indicator {
   background-color: #13131a;
   outline: 1px solid #13131a;
 }
+
+.chevron {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+button:hover .chevron {
+  transform: translateX(5px);
+}

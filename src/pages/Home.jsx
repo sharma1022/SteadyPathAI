@@ -40,24 +40,28 @@ const Home = () => {
         SteadyPathAI is dedicated to providing personalized mental health care
         through AI-driven treatment plans.
       </p>
-      <div className="mb-8 mt-4 h-12 flex-row justify-end gap-2 sm:flex">
-        <CustomButton
-          btnType={"button"}
-          title={authenticated ? "Dashboard >" : "Get Started >"}
-          styles={
+      <CustomButton
+        btnType={"button"}
+        title={
+          <span className="flex items-center gap-2">
+            {authenticated ? "Dashboard" : "Get Started"}
+            <span className="chevron"> &gt; </span>
+          </span>
+        }
+        styles={`mt-[1rem] h-[2.5rem] mb-[2rem]  md:mb-[4rem]
+          ${
             authenticated
               ? "bg-cyan-600 hover:bg-cyan-500"
               : "bg-[#2563eb] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
+          }`}
+        handleClick={() => {
+          if (authenticated) {
+            navigate("/dashboard");
+          } else {
+            navigate("/sign-in");
           }
-          handleClick={() => {
-            if (authenticated) {
-              navigate("/dashboard");
-            } else {
-              navigate("/sign-in");
-            }
-          }}
-        />
-      </div>
+        }}
+      />
     </section>
   );
 };

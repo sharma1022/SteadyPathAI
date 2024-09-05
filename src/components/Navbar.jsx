@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { RiMentalHealthFill } from "react-icons/ri";
 import { navlinks } from "../constants";
 import ThemeSwitcher from "./ThemeSwitcher";
+import { MdLogout } from "react-icons/md";
 const Navbar = () => {
   const { ready, authenticated, login, user, logout } = usePrivy();
   const [toggleDrawer, setToggleDrawer] = useState(false);
@@ -24,22 +25,40 @@ const Navbar = () => {
     <div className="mb-[35px] flex w-full flex-col-reverse justify-between gap-6 sm:flex-row md:flex-row">
       <div
         className="hidden cursor-pointer gap-4 sm:flex sm:flex-row sm:items-center"
-        onClick={() => navigate("/")}
+        onClick={() => {
+          authenticated ? navigate("/dashboard") : navigate("/");
+        }}
       >
         <RiMentalHealthFill style={{ color: "#2563eb", fontSize: "50px" }} />
         <p className="navbar-txt blue_gradient text-center">SteadyPathAI</p>
       </div>
       <div className="hidden flex-row justify-end gap-2 sm:flex">
-        <CustomButton
-          btnType={"button"}
-          title={authenticated ? "Logout" : "Get Started"}
-          styles={
-            authenticated
-              ? "bg-cyan-600 hover:bg-cyan-500"
-              : "bg-[#2563eb] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
-          }
-          handleClick={handleLoginLogout}
-        />
+        {!authenticated ? (
+          <div className="flex gap-8">
+            <ThemeSwitcher />
+            <CustomButton
+              btnType={"button"}
+              title={authenticated ? "Logout" : "Get Started"}
+              styles={
+                authenticated
+                  ? "bg-cyan-600 hover:bg-cyan-500"
+                  : "bg-[#2563eb] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
+              }
+              handleClick={handleLoginLogout}
+            />
+          </div>
+        ) : (
+          <CustomButton
+            btnType={"button"}
+            title={authenticated ? "Logout" : "Get Started"}
+            styles={
+              authenticated
+                ? "bg-cyan-600 hover:bg-cyan-500"
+                : "bg-[#2563eb] hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
+            }
+            handleClick={handleLoginLogout}
+          />
+        )}
       </div>
       <div className="relative flex items-center justify-between sm:hidden">
         <div
@@ -48,6 +67,7 @@ const Navbar = () => {
         >
           <RiMentalHealthFill style={{ color: "#2563eb", fontSize: "40px" }} />
         </div>
+
         <img
           src="src/assets/icons/menu.svg"
           alt="Menu icon"
@@ -66,7 +86,7 @@ const Navbar = () => {
             {navlinks.map((link) => (
               <li
                 key={link.name}
-                className={`flex items-center p-4 ${isActive === link.name && "bg-gray-100 dark:bg-[#3a3a43]"}`}
+                className={`flex cursor-pointer items-center p-4 ${isActive === link.name && "bg-gray-100 dark:bg-[#3a3a43]"}`}
                 onClick={() => {
                   setIsActive(link.name);
                   setToggleDrawer(false);
@@ -89,6 +109,21 @@ const Navbar = () => {
                 </p>
               </li>
             ))}
+            <li
+              className="flex cursor-pointer items-center p-4"
+              onClick={() => {
+                handleLoginLogout();
+                setToggleDrawer(false);
+              }}
+            >
+              <MdLogout
+                size={24}
+                className="h-[24px] w-[24px] object-contain text-gray-500"
+              />
+              <p className="font-epilogue ml-[20px] text-[14px] font-semibold text-[#808191]">
+                {authenticated ? "Logout" : "Sign In"}
+              </p>
+            </li>
             <li className="flex items-center p-4">
               <ThemeSwitcher />
             </li>
