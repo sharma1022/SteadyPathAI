@@ -16,7 +16,7 @@ root.render(
     appId="clzt3an3309484yyvfjt09okk"
     config={{
       loginMethods: ["email"],
-      // Customize Privy's appearance in your app
+
       appearance: {
         theme: "dark",
       },

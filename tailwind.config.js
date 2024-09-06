@@ -10,7 +10,14 @@ module.exports = {
     "node_modules/preline/dist/*.js",
   ],
   theme: {
-    extend: {}
+    extend: {
+      fontFamily: {
+        epilogue: ["Epilogue", "sans-serif", "Poppins"],
+      },
+      boxShadow: {
+        secondary: "10px 10px 20px rgba(2, 2, 2, 0.25)",
+      },
+    }
     ,
   },
   variants: {},

@@ -28,8 +28,8 @@ const DisplayInfo = () => {
     aiRecommendation: 0,
     totalTasks: 0,
     completedTasks: 0,
-    pendingTasks: 0,
-    overdueTasks: 0,
+    inProgressTasks: 0,
+    toDoTasks: 0,
   });
 
   useEffect(() => {
@@ -45,8 +45,8 @@ const DisplayInfo = () => {
           let aiRecommendation = 0;
           let totalTasks = 0;
           let completedTasks = 0;
-          let pendingTasks = 0;
-          let overdueTasks = 0;
+          let inProgressTasks = 0;
+          let toDoTasks = 0;
 
           records.forEach((record) => {
             if (record.kanbanRecords) {
@@ -62,11 +62,11 @@ const DisplayInfo = () => {
                   (task) => task.columnId === "done",
                 ).length;
                 console.log(kanban.tasks);
-                pendingTasks += kanban.tasks.filter(
+                inProgressTasks += kanban.tasks.filter(
                   (task) => task.columnId === "doing",
                 ).length;
-                overdueTasks += kanban.tasks.filter(
-                  (task) => task.columnId === "overdue",
+                toDoTasks += kanban.tasks.filter(
+                  (task) => task.columnId === "todo",
                 ).length;
               } catch (error) {
                 console.error("Failed to parse kanbanRecords:", error);
@@ -79,8 +79,8 @@ const DisplayInfo = () => {
             aiRecommendation,
             totalTasks,
             completedTasks,
-            pendingTasks,
-            overdueTasks,
+            inProgressTasks,
+            toDoTasks,
           });
         })
         .catch((e) => {
@@ -122,23 +122,23 @@ const DisplayInfo = () => {
     {
       title: "Pending Tasks",
       subTitle: "View",
-      value: metrics.pendingTasks,
+      value: metrics.inProgressTasks,
       icon: FaHourglassEnd,
       onClick: () => navigate("/schedule"),
     },
     {
-      title: "Overdue Tasks",
+      title: "To Do Tasks",
       subTitle: "View",
-      value: metrics.overdueTasks,
+      value: metrics.toDoTasks,
       icon: IoAlertCircleOutline,
       onClick: () => navigate("/schedule"),
     },
   ];
 
   const DoughnutData = [
-    metrics.completedTasks || 1,
-    metrics.pendingTasks || 1,
-    metrics.overdueTasks || 0,
+    metrics.completedTasks || 0,
+    metrics.inProgressTasks || 1,
+    metrics.toDoTasks || 0,
   ];
   const DoughnutLabels = ["Completed", "Pending", "Overdue"];
 

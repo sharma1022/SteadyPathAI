@@ -9,7 +9,7 @@ export const Users = pgTable("users", {
   username: varchar("username").notNull(),
   age: integer("age").notNull(),
   location: varchar("location").notNull(),
-  createdBy: varchar("created_by").notNull(),
+  createdBy: varchar("created_by").unique().notNull(),
 });
 
 // records schema

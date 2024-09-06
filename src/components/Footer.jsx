@@ -13,7 +13,10 @@ const Footer = () => {
           target="_blank"
           rel="noopener noreferrer"
         >
-          <FaLinkedin size={32} className="text-gray-800 dark:text-white" />
+          <FaLinkedin
+            size={32}
+            className="curser-pointer text-gray-800 dark:text-white"
+          />
         </Link>
       </div>
     </div>
