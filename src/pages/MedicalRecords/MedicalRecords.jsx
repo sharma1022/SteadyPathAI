@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { FiPlusCircle } from "react-icons/fi";
 import RecordCard from "../../components/MedicalRecords/RecordCard";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { usePrivy } from "@privy-io/react-auth";
 import { useStateContext } from "../../context";
 import CreateRecordModal from "../../components/MedicalRecords/CreateRecordModal";
 import { InfinitySpin } from "react-loader-spinner";
+import SearchBar from "../../components/SearchBar";
+
 const MedicalRecords = () => {
   const navigate = useNavigate();
   const { user } = usePrivy();
@@ -13,6 +15,8 @@ const MedicalRecords = () => {
     useStateContext();
   const [userRecords, setUserRecords] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const searchQuery = searchParams.get("search") || "";
 
   useEffect(() => {
     if (user) {
@@ -22,9 +26,13 @@ const MedicalRecords = () => {
   }, [user, getUserByEmail, getUserRecords]);
 
   useEffect(() => {
-    setUserRecords(records);
-    localStorage.setItem("userRecords", JSON.stringify(records));
-  }, [records]);
+    const filteredRecords = records.filter((record) =>
+      record?.recordName?.toLowerCase().includes(searchQuery.toLowerCase()),
+    );
+
+    setUserRecords(filteredRecords);
+    localStorage.setItem("userRecords", JSON.stringify(filteredRecords));
+  }, [records, searchQuery]);
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -64,6 +72,11 @@ const MedicalRecords = () => {
       state: filteredRecords[0],
     });
   };
+
+  const handleSearch = (searchTerm) => {
+    setSearchParams({ search: searchTerm });
+  };
+
   if (!currentUser) {
     return (
       <div className="flex h-[50vh] w-full items-center justify-center">
@@ -79,10 +92,15 @@ const MedicalRecords = () => {
     );
   }
   return (
-    <div className="flex flex-wrap gap-[26px]">
+    <div className="flex flex-col gap-[26px]">
+      <SearchBar
+        value={searchQuery}
+        onSearch={handleSearch}
+        placeholder={"Search for records"}
+      />
       <button
         type="button"
-        className="mt-6 inline-flex items-center gap-x-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-300 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-[#13131a] dark:text-white dark:hover:bg-neutral-800"
+        className="inline-flex items-center gap-x-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-300 disabled:pointer-events-none disabled:opacity-50 lg:w-[16rem] dark:border-neutral-700 dark:bg-[#13131a] dark:text-white dark:hover:bg-neutral-800"
         onClick={handleOpenModal}
       >
         <FiPlusCircle size={24} />
@@ -96,13 +114,17 @@ const MedicalRecords = () => {
       />
 
       <div className="grid w-full gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
-        {userRecords?.map((record) => (
-          <RecordCard
-            key={record.recordName}
-            record={record}
-            onNavigate={handleNavigate}
-          />
-        ))}
+        {userRecords.length > 0 ? (
+          userRecords.map((record) => (
+            <RecordCard
+              key={record.recordName}
+              record={record}
+              onNavigate={handleNavigate}
+            />
+          ))
+        ) : (
+          <div className="text-center text-gray-500">No records found</div>
+        )}
       </div>
     </div>
   );

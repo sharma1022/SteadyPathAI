@@ -61,7 +61,7 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 }
 
 .desc {
-  @apply mt-5 text-sm text-gray-600 sm:text-xl max-w-2xl;
+  @apply mt-5 text-xl text-gray-800 sm:text-2xl max-w-2xl;
 }
 
 .sidebar-txt{

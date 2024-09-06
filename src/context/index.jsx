@@ -94,6 +94,21 @@ export const StateContextProvider = ({ children }) => {
     }
   }, []);
 
+  const deleteRecord = useCallback(async (recordName) => {
+    try {
+      await db
+        .delete(Records)
+        .where(eq(Records.recordName, recordName))
+        .execute();
+
+      setRecords((prevRecords) =>
+        prevRecords.filter((record) => record.recordName !== recordName),
+      );
+    } catch (error) {
+      console.error("Error deleting record:", error);
+    }
+  }, []);
+
   // Function to edit a user
   const editUser = useCallback(
     async (userId, updatedUserData) => {
@@ -143,6 +158,7 @@ export const StateContextProvider = ({ children }) => {
         currentUser,
         updateRecord,
         editUser,
+        deleteRecord,
       }}
     >
       {children}

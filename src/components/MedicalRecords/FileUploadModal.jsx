@@ -83,7 +83,7 @@ const FileUploadModal = ({
       {uploading && (
         <TbProgress
           size={15}
-          className="mr-3 mt-3 h-7 w-5 animate-spin text-white"
+          className="mr-3 mt-3 h-7 w-5 animate-spin text-gray-800 dark:text-white"
         />
       )}
       {uploadSuccess && (

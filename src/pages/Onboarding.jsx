@@ -52,7 +52,7 @@ const Onboarding = () => {
                 value={firstName}
                 onChange={(e) => setFirstNname(e.target.value)}
                 required
-                className="w-full rounded-lg bg-neutral-100 px-4 py-3 text-gray-800 focus:border-blue-600 focus:outline-none dark:bg-neutral-900 dark:text-neutral-400"
+                className="w-full rounded-lg bg-neutral-100 px-4 py-3 text-gray-800 placeholder:text-[#4b5264] focus:border-blue-600 focus:outline-none dark:bg-neutral-900 dark:text-neutral-400"
                 placeholder="John"
               />
             </div>
@@ -69,7 +69,7 @@ const Onboarding = () => {
                 value={lastName}
                 onChange={(e) => setLastNname(e.target.value)}
                 required
-                className="w-full rounded-lg bg-neutral-100 px-4 py-3 text-gray-800 focus:border-blue-600 focus:outline-none dark:bg-neutral-900 dark:text-neutral-400"
+                className="w-full rounded-lg bg-neutral-100 px-4 py-3 text-gray-800 placeholder:text-[#4b5264] focus:border-blue-600 focus:outline-none dark:bg-neutral-900 dark:text-neutral-400"
                 placeholder="Smith"
               />
             </div>
@@ -88,7 +88,7 @@ const Onboarding = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               required
-              className="w-full rounded-lg bg-neutral-100 px-4 py-3 text-gray-800 focus:border-blue-600 focus:outline-none dark:bg-neutral-900 dark:text-neutral-400"
+              className="w-full rounded-lg bg-neutral-100 px-4 py-3 text-gray-800 placeholder:text-[#4b5264] focus:border-blue-600 focus:outline-none dark:bg-neutral-900 dark:text-neutral-400"
               placeholder="johnsmith"
             />
           </div>
@@ -105,7 +105,7 @@ const Onboarding = () => {
               value={age}
               onChange={(e) => setAge(e.target.value)}
               required
-              className="w-full rounded-lg bg-neutral-100 px-4 py-3 text-gray-800 focus:border-blue-600 focus:outline-none dark:bg-neutral-900 dark:text-neutral-400"
+              className="w-full rounded-lg bg-neutral-100 px-4 py-3 text-gray-800 placeholder:text-[#4b5264] focus:border-blue-600 focus:outline-none dark:bg-neutral-900 dark:text-neutral-400"
               placeholder="0"
             />
           </div>
@@ -122,7 +122,7 @@ const Onboarding = () => {
               value={location}
               onChange={(e) => setLocation(e.target.value)}
               required
-              className="w-full rounded-lg bg-neutral-100 px-4 py-3 text-gray-800 focus:border-blue-600 focus:outline-none dark:bg-neutral-900 dark:text-neutral-400"
+              className="w-full rounded-lg bg-neutral-100 px-4 py-3 text-gray-800 placeholder:text-[#4b5264] focus:border-blue-600 focus:outline-none dark:bg-neutral-900 dark:text-neutral-400"
               placeholder="NY"
             />
           </div>

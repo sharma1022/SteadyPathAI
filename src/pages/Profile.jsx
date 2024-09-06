@@ -50,6 +50,8 @@ const Profile = () => {
     }
   };
 
+  const handleDelete = () => {};
+
   if (!currentUser) {
     return (
       <div className="flex h-[50vh] w-full items-center justify-center">
@@ -109,6 +111,13 @@ const Profile = () => {
           <p className="text-lg font-semibold text-gray-800 dark:text-white">
             {currentUser.location}
           </p>
+
+          <button
+            className="mt-6 flex items-center justify-center gap-x-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-center text-sm font-medium text-red-800 shadow-sm hover:bg-red-300 disabled:pointer-events-none disabled:opacity-50 lg:w-[16rem] dark:border-neutral-700 dark:bg-[#13131a] dark:text-red-800 dark:hover:bg-red-100"
+            onClick={handleDelete}
+          >
+            Delete your account
+          </button>
         </div>
       </div>
 

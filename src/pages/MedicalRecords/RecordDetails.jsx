@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { MdOutlineUploadFile } from "react-icons/md";
 import { FaChevronRight } from "react-icons/fa";
 import RecordDetailsHeader from "../../components/MedicalRecords/RecordDetailsHeader";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useStateContext } from "../../context/index";
 import { TbProgress } from "react-icons/tb";
 import FileUploadModal from "../../components/MedicalRecords/FileUploadModal";
 import { GoogleGenerativeAI } from "@google/generative-ai";
 import ReactMarkdown from "react-markdown";
-
+import { IoIosArrowBack } from "react-icons/io";
+import { MdDeleteOutline } from "react-icons/md";
 const geminiApiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
 const RecordDetails = () => {
@@ -26,7 +27,7 @@ const RecordDetails = () => {
   const [fileType, setFileType] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const { updateRecord } = useStateContext();
+  const { updateRecord, deleteRecord, record } = useStateContext();
 
   const handleOpenModal = () => {
     setIsModalOpen(true);
@@ -146,12 +147,32 @@ const RecordDetails = () => {
     setIsProcessing(false);
   };
 
+  const handleDelete = (record) => {
+    deleteRecord(record);
+  };
   return (
-    <div className="flex flex-wrap gap-[26px]">
+    <div className="flex w-full flex-col gap-[26px]">
+      <div className="flex justify-between">
+        <IoIosArrowBack
+          size={32}
+          className="cursor-pointer text-cyan-600 hover:text-cyan-500"
+          onClick={() => {
+            navigate("/medical-records");
+          }}
+        />
+        <MdDeleteOutline
+          size={32}
+          className="cursor-pointer text-red-600 hover:scale-125 hover:text-red-500"
+          onClick={() => {
+            handleDelete(state.recordName);
+            navigate("/medical-records");
+          }}
+        />
+      </div>
       <button
         type="button"
         onClick={handleOpenModal}
-        className="mt-6 inline-flex items-center gap-x-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-300 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-[#13131a] dark:text-white dark:hover:bg-neutral-800"
+        className="inline-flex items-center gap-x-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-300 disabled:pointer-events-none disabled:opacity-50 lg:w-[16rem] dark:border-neutral-700 dark:bg-[#13131a] dark:text-white dark:hover:bg-neutral-800"
       >
         <MdOutlineUploadFile size={24} />
         Upload Reports

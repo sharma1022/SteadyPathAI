@@ -1,23 +1,25 @@
+import {dash, kanban,profile,records} from "../assets/icons"
+
 export const navlinks = [
     {
       name: "Dashboard",
-      imgUrl: "src/assets/icons/dashboard.svg",
+      imgUrl: dash,
       link: "/dashboard",
     },
     {
       name: "Medical Records",
-      imgUrl: "src/assets/icons/records.svg",
+      imgUrl: records,
       link: "/medical-records",
     },
     {
       name: "Schedule",
-      imgUrl: "src/assets/icons/kanban.svg",
+      imgUrl: kanban,
       link: "/schedule",
     },
   
     {
       name: "Profile",
-      imgUrl: "src/assets/icons/profile.svg",
+      imgUrl: profile,
       link: "/profile",
     },
   ];
