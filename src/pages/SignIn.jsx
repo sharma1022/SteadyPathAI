@@ -18,7 +18,15 @@ const SignIn = () => {
     } else {
       navigate("/dashboard");
     }
-  }, [authenticated, user, currentUser]);
+  }, [authenticated, ready, user, currentUser]);
+
+  // useEffect(() => {
+  //   if (ready && !authenticated) {
+  //     login();
+  //   } else if (user && !currentUser) {
+  //     navigate("/onboarding");
+  //   }
+  // }, [user, authenticated, ready, login, currentUser, navigate]);
 
   return <div></div>;
 };
