@@ -9,7 +9,7 @@ const Home = () => {
   const { authenticated } = usePrivy();
   const navigate = useNavigate();
   return (
-    <section className="flex-center l:p-8 mt-12 flex w-full flex-col items-center">
+    <section className="flex-center l:p-8 mt-20 flex w-full flex-col items-center">
       <ContainerScroll
         titleComponent={
           <>

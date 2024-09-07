@@ -18,7 +18,7 @@ const SignIn = () => {
     } else {
       navigate("/dashboard");
     }
-  }, [authenticated, ready, user, currentUser]);
+  }, [authenticated, currentUser, ready, user, currentUser]);
 
   // useEffect(() => {
   //   if (ready && !authenticated) {

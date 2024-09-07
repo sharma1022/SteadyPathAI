@@ -6,6 +6,7 @@ import { RiMentalHealthFill } from "react-icons/ri";
 import { navlinks } from "../constants";
 import ThemeSwitcher from "./ThemeSwitcher";
 import { MdLogout } from "react-icons/md";
+import { menu } from "../assets/icons/index";
 const Navbar = () => {
   const { ready, authenticated, login, user, logout } = usePrivy();
   const [toggleDrawer, setToggleDrawer] = useState(false);
@@ -69,7 +70,7 @@ const Navbar = () => {
         </div>
 
         <img
-          src="src/assets/icons/menu.svg"
+          src={menu}
           alt="Menu icon"
           className="h-[34px] w-[34px] cursor-pointer object-contain hover:grayscale"
           onClick={() => {
@@ -78,7 +79,7 @@ const Navbar = () => {
         />
 
         <div
-          className={`shadow-secondary absolute left-0 right-0 top-[60px] z-10 bg-gray-200 py-4 shadow-lg dark:bg-[#1c1c24] ${
+          className={`absolute left-0 right-0 top-[60px] z-10 bg-gray-200 py-4 shadow-lg dark:bg-[#1c1c24] ${
             !toggleDrawer ? "-translate-y-[100vh]" : "translate-y-0"
           } transition-all duration-700`}
         >

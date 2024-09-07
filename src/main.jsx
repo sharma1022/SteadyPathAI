@@ -8,12 +8,13 @@ import App from "./App";
 import "./index.css";
 import { PrivyProvider } from "@privy-io/react-auth";
 import { StateContextProvider } from "./context";
+const privyApiKey = import.meta.env.VITE_PRIVY_APP_ID;
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
   <PrivyProvider
-    appId="clzt3an3309484yyvfjt09okk"
+    appId={privyApiKey}
     config={{
       loginMethods: ["email"],
 
