@@ -14,6 +14,10 @@ const Onboarding = () => {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    document.title = "SteadyPathAI | Register";
+  }, []);
+
   const handleOnboarding = async (e) => {
     e.preventDefault();
     const userData = {

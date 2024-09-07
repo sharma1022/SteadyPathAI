@@ -4,10 +4,18 @@ import { useStateContext } from "../context";
 import { usePrivy } from "@privy-io/react-auth";
 import { MdEdit } from "react-icons/md";
 import Modal from "../components/Modal";
+import { useNavigate } from "react-router-dom";
+
 const Profile = () => {
-  const { currentUser, getUserByEmail, editUser } = useStateContext();
-  const { user } = usePrivy();
+  useEffect(() => {
+    document.title = "SteadyPathAI | Profile";
+  }, []);
+  const { currentUser, getUserByEmail, editUser, deleteUser } =
+    useStateContext();
+  const { user, logout } = usePrivy();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
+
   const [editUserData, setEditUserData] = useState({
     firstName: "",
     lastName: "",
@@ -15,6 +23,8 @@ const Profile = () => {
     age: "",
     location: "",
   });
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!currentUser) {
@@ -50,7 +60,19 @@ const Profile = () => {
     }
   };
 
-  const handleDelete = () => {};
+  const handleDeleteClick = () => {
+    setIsDeleteModalOpen(true);
+  };
+
+  const handleConfirmDelete = async () => {
+    try {
+      await deleteUser(currentUser.id);
+      setIsDeleteModalOpen(false);
+      logout().then(navigate("/"));
+    } catch (error) {
+      console.error("Failed to delete user:", error);
+    }
+  };
 
   if (!currentUser) {
     return (
@@ -71,7 +93,7 @@ const Profile = () => {
     <div className="w-full rounded-lg bg-white py-6 shadow-lg dark:bg-[#1c1c24]">
       <div className="flex flex-col">
         <div className="flex flex-row justify-between pr-8">
-          <h1 className="mx-4 mb-4 text-3xl font-semibold text-gray-800 sm:mx-8 dark:text-white">
+          <h1 className="mx-4 mb-4 text-3xl font-semibold text-gray-800 dark:text-white sm:mx-8">
             User Account
           </h1>
           <MdEdit
@@ -81,7 +103,7 @@ const Profile = () => {
           />
         </div>
 
-        <div className="w-full border-t border-gray-200 px-4 pt-4 sm:px-8 dark:border-neutral-800">
+        <div className="w-full border-t border-gray-200 px-4 pt-4 dark:border-neutral-800 sm:px-8">
           <p className="mb-1 text-sm text-gray-400">First Name:</p>
           <p className="mb-4 text-lg font-semibold text-gray-800 dark:text-white">
             {currentUser.firstName}
@@ -113,8 +135,8 @@ const Profile = () => {
           </p>
 
           <button
-            className="mt-6 flex items-center justify-center gap-x-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-center text-sm font-medium text-red-800 shadow-sm hover:bg-red-300 disabled:pointer-events-none disabled:opacity-50 lg:w-[16rem] dark:border-neutral-700 dark:bg-[#13131a] dark:text-red-800 dark:hover:bg-red-100"
-            onClick={handleDelete}
+            className="mt-6 flex items-center justify-center gap-x-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-center text-sm font-medium text-red-800 shadow-sm hover:bg-red-300 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-[#13131a] dark:text-red-800 dark:hover:bg-red-100 lg:w-[16rem]"
+            onClick={handleDeleteClick}
           >
             Delete your account
           </button>
@@ -166,6 +188,18 @@ const Profile = () => {
             className="block w-full rounded-lg border-2 px-4 py-3 text-sm focus:border-2 focus:outline-none disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-400 dark:placeholder-neutral-500"
           />
         </div>
+      </Modal>
+      <Modal
+        title="Confirm Account Deletion"
+        isOpen={isDeleteModalOpen}
+        onClose={() => setIsDeleteModalOpen(false)}
+        onAction={handleConfirmDelete}
+        actionLabel="Delete Account"
+      >
+        <p>
+          Are you sure you want to delete your account? This action cannot be
+          undone.
+        </p>
       </Modal>
     </div>
   );

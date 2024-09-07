@@ -17,7 +17,9 @@ const MedicalRecords = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const searchQuery = searchParams.get("search") || "";
-
+  useEffect(() => {
+    document.title = "SteadyPathAI | Medical Records";
+  }, []);
   useEffect(() => {
     if (user) {
       getUserByEmail(user.email.address);
@@ -100,7 +102,7 @@ const MedicalRecords = () => {
       />
       <button
         type="button"
-        className="inline-flex items-center gap-x-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-300 disabled:pointer-events-none disabled:opacity-50 lg:w-[16rem] dark:border-neutral-700 dark:bg-[#13131a] dark:text-white dark:hover:bg-neutral-800"
+        className="inline-flex items-center gap-x-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-300 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-[#13131a] dark:text-white dark:hover:bg-neutral-800 lg:w-[16rem]"
         onClick={handleOpenModal}
       >
         <FiPlusCircle size={24} />

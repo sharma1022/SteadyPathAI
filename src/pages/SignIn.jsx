@@ -3,30 +3,28 @@ import { usePrivy } from "@privy-io/react-auth";
 import { useStateContext } from "../context/index";
 import { useNavigate } from "react-router-dom";
 const SignIn = () => {
-  const { currentUser } = useStateContext();
+  const { currentUser, getUserByEmail } = useStateContext();
 
   const { user, authenticated, ready, login } = usePrivy();
 
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (ready && !authenticated) {
-      login();
-    } else if (user && !currentUser) {
-      console.log(currentUser);
-      navigate("/onboarding");
-    } else {
-      navigate("/dashboard");
-    }
-  }, [authenticated, currentUser, ready, user, currentUser]);
+    document.title = "SteadyPathAI | Sign In";
+  }, []);
 
-  // useEffect(() => {
-  //   if (ready && !authenticated) {
-  //     login();
-  //   } else if (user && !currentUser) {
-  //     navigate("/onboarding");
-  //   }
-  // }, [user, authenticated, ready, login, currentUser, navigate]);
+  useEffect(() => {
+    if (ready) {
+      if (!authenticated) {
+        login();
+      } else if (user && !currentUser) {
+        getUserByEmail(user.email.address);
+        navigate("/onboarding");
+      } else if (currentUser) {
+        navigate("/dashboard");
+      }
+    }
+  }, [authenticated, currentUser, ready, user, navigate, getUserByEmail]);
 
   return <div></div>;
 };

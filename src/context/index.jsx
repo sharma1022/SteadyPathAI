@@ -109,6 +109,22 @@ export const StateContextProvider = ({ children }) => {
     }
   }, []);
 
+  const deleteUser = useCallback(
+    async (userId) => {
+      try {
+        await db.delete(Users).where(eq(Users.id, userId)).execute();
+        setUsers((prevUsers) => prevUsers.filter((user) => user.id !== userId));
+
+        if (currentUser?.id === userId) {
+          setCurrentUser(null);
+        }
+      } catch (error) {
+        console.error("Error deleting user:", error);
+      }
+    },
+    [currentUser],
+  );
+
   // Function to edit a user
   const editUser = useCallback(
     async (userId, updatedUserData) => {
@@ -124,10 +140,9 @@ export const StateContextProvider = ({ children }) => {
             createdBy: updatedUserData.createdBy,
           })
           .where(eq(Users.id, userId))
-          .returning() // Returns the updated user data
+          .returning()
           .execute();
 
-        // Update the local state with the new user data
         setUsers((prevUsers) =>
           prevUsers.map((user) => (user.id === userId ? updatedUser[0] : user)),
         );
@@ -159,6 +174,7 @@ export const StateContextProvider = ({ children }) => {
         updateRecord,
         editUser,
         deleteRecord,
+        deleteUser,
       }}
     >
       {children}

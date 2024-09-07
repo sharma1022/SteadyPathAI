@@ -1,5 +1,5 @@
 import { usePrivy } from "@privy-io/react-auth";
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import CustomButton from "../components/CustomButton";
 import { ContainerScroll } from "../components/ui/container-scroll-animation";
@@ -8,6 +8,9 @@ import dashImg from "../assets/icons/dash.png";
 const Home = () => {
   const { authenticated } = usePrivy();
   const navigate = useNavigate();
+  useEffect(() => {
+    document.title = "SteadyPathAI - Welcome!";
+  }, []);
   return (
     <section className="flex-center l:p-8 mt-20 flex w-full flex-col items-center">
       <ContainerScroll

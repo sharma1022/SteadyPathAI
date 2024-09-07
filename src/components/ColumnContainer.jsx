@@ -67,7 +67,7 @@ const ColumnContainer = ({
           {!editMode && column.title}
           {editMode && (
             <input
-              className="rounded border px-2 outline-none focus:border-green-500 dark:bg-black"
+              className="rounded border px-2 outline-none focus:border-blue-500 dark:bg-black"
               value={column.title}
               onChange={(e) => updateColumn(column.id, e.target.value)}
               autoFocus
@@ -87,7 +87,7 @@ const ColumnContainer = ({
           }}
           className="hover:bg-columnBackgroundColor rounded stroke-gray-500 px-1 py-2 hover:stroke-white"
         >
-          <FaRegTrashAlt />
+          <FaRegTrashAlt className="text-gray-800 hover:text-red-600 dark:text-white" />
         </button>
       </div>
 
@@ -105,7 +105,7 @@ const ColumnContainer = ({
       </div>
 
       <button
-        className="dark:border-columnBackgroundColor dark:border-x-columnBackgroundColor hover:bg-mainBackgroundColor flex items-center gap-2 rounded-md border-2 border-gray-800 p-4 text-gray-800 hover:text-green-500 active:bg-black dark:border-gray-300 dark:text-white"
+        className="dark:border-columnBackgroundColor dark:border-x-columnBackgroundColor hover:bg-mainBackgroundColor flex items-center gap-2 rounded-md border-2 border-gray-800 p-4 text-gray-800 hover:text-cyan-600 active:bg-black dark:border-gray-300 dark:text-white"
         onClick={() => {
           createTask(column.id);
         }}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { MdOutlineUploadFile } from "react-icons/md";
 import { FaChevronRight } from "react-icons/fa";
 import RecordDetailsHeader from "../../components/MedicalRecords/RecordDetailsHeader";
@@ -23,6 +23,9 @@ const RecordDetails = () => {
   const [analysisResult, setAnalysisResult] = useState(
     state.analysisResult || "",
   );
+  useEffect(() => {
+    document.title = `SteadyPathAI | ${state.recordName}`;
+  }, []);
   const [filename, setFilename] = useState("");
   const [fileType, setFileType] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -172,7 +175,7 @@ const RecordDetails = () => {
       <button
         type="button"
         onClick={handleOpenModal}
-        className="inline-flex items-center gap-x-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-300 disabled:pointer-events-none disabled:opacity-50 lg:w-[16rem] dark:border-neutral-700 dark:bg-[#13131a] dark:text-white dark:hover:bg-neutral-800"
+        className="inline-flex items-center gap-x-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-800 shadow-sm hover:bg-gray-300 disabled:pointer-events-none disabled:opacity-50 dark:border-neutral-700 dark:bg-[#13131a] dark:text-white dark:hover:bg-neutral-800 lg:w-[16rem]"
       >
         <MdOutlineUploadFile size={24} />
         Upload Reports
@@ -228,7 +231,7 @@ const RecordDetails = () => {
                       </button>
                     </div>
                   </div>
-                  <div className="grid gap-3 border-t border-gray-200 px-6 py-4 md:flex md:items-center md:justify-between dark:border-neutral-700">
+                  <div className="grid gap-3 border-t border-gray-200 px-6 py-4 dark:border-neutral-700 md:flex md:items-center md:justify-between">
                     <div>
                       <p className="text-sm text-gray-600 dark:text-neutral-400">
                         <span className="font-semibold text-gray-800 dark:text-neutral-200"></span>{" "}

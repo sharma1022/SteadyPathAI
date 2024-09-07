@@ -11,8 +11,6 @@ import { FaPlus } from "react-icons/fa6";
 import { createPortal } from "react-dom";
 import TaskCard from "./TaskCard";
 import ColumnContainer from "./ColumnContainer";
-import { useStateContext } from "../context";
-import { usePrivy } from "@privy-io/react-auth";
 
 const KanbanBoard = ({ state }) => {
   const defaultCols =
@@ -65,7 +63,7 @@ const KanbanBoard = ({ state }) => {
           </div>
           <button
             onClick={() => createNewColumn()}
-            className="border-columnBackgroundColor dr:bg-mainBackgroundColor flex h-[60px] w-[350px] min-w-[350px] cursor-pointer gap-2 rounded-lg border-2 border-gray-800 p-4 text-gray-800 ring-green-500 hover:ring-2 dark:border-white dark:text-white"
+            className="border-columnBackgroundColor dr:bg-mainBackgroundColor flex h-[60px] w-[350px] min-w-[350px] cursor-pointer gap-2 rounded-lg border-2 border-gray-800 p-4 text-gray-800 ring-blue-500 hover:ring-2 dark:border-white dark:text-white"
           >
             <FaPlus />
             Add Column

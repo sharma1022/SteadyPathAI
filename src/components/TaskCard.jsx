@@ -94,7 +94,7 @@ const TaskCard = ({ task, deleteTask, updateTask }) => {
           }}
           className="bg-columnBackgroundColor absolute right-4 top-1/2 -translate-y-1/2 rounded stroke-white p-2 opacity-60 hover:opacity-100"
         >
-          <FaRegTrashAlt />
+          <FaRegTrashAlt className="text-gray-800 hover:text-red-600 dark:text-white" />
         </button>
       )}
     </div>
