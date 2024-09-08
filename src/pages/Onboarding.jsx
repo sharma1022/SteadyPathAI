@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useStateContext } from "../context";
 import { usePrivy } from "@privy-io/react-auth";
 import { useNavigate } from "react-router-dom";
